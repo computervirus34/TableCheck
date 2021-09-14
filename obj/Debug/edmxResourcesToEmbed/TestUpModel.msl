@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TestUPModelStoreContainer" CdmEntityContainer="TestUPEntities1">
+    <FunctionImportMapping FunctionImportName="getTables" FunctionName="TestUPModel.Store.getTables">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TestUPModel.getTables_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TableSchema" ColumnName="TableSchema" />
+          <ScalarProperty Name="Table" ColumnName="Table" />
+          <ScalarProperty Name="DependsON" ColumnName="DependsON" />
+          <ScalarProperty Name="LVL" ColumnName="LVL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

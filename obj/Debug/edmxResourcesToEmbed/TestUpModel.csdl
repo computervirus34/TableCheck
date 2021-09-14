@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestUPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TestUPEntities1" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="getTables" ReturnType="Collection(TestUPModel.getTables_Result)" />
+  </EntityContainer>
+  <ComplexType Name="getTables_Result">
+    <Property Type="Int64" Name="ID" Nullable="true" />
+    <Property Type="String" Name="TableSchema" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Table" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="DependsON" Nullable="true" />
+    <Property Type="Int32" Name="LVL" Nullable="true" />
+  </ComplexType>
+</Schema>
