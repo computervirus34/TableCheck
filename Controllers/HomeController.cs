@@ -34,19 +34,15 @@ namespace TableCheck.Controllers
             {
                 List<string> all = UnionOtherListExceptCurrent(searchTables.Where(o => !o.Table.Equals(item)).ToList());
 
-                var currentDependends = searchTables.Where(o => o.Table.Equals(item)).ToList();
                 List<string> nodeDepList = new List<string> { item };
-                foreach (var currentDependent in currentDependends)
+                
+                var currentDependends = searchTables.Where(o => o.Table.Equals(item)).SingleOrDefault();
+                if(currentDependends!=null)
                 {
-                    List<string> newTables = currentDependent.DependsON.Split(',').ToList();
+                    List<string> newTables = currentDependends.DependsON.Split(',').ToList();
                     nodeDepList.AddRange(newTables);
                 }
                 if (all.Contains(item))
-                {
-                    isChecked = true;
-                    continue;
-                }
-                else if (nodeDepList.Contains(item))
                 {
                     isChecked = true;
                     continue;
@@ -63,7 +59,10 @@ namespace TableCheck.Controllers
                     break;
                 }
             }
-            TempData["retSuccess"] = "Table are joinable amongest them";
+            if (isChecked)
+            {
+                TempData["retSuccess"] = "Table are joinable amongest them";
+            }
             return View();
 
         }
@@ -74,9 +73,13 @@ namespace TableCheck.Controllers
 
             foreach (var item in enumerable)
             {
-                List<string> newTables = item.DependsON.Split(',').ToList();
+                //allTables.AddRange(item.Table);
+                if (item.LVL != 0)
+                {
+                    List<string> newTables = item.DependsON.Split(',').ToList();
 
-                allTables.AddRange(newTables);
+                    allTables.AddRange(newTables);
+                }
             }
             return allTables;
         }
